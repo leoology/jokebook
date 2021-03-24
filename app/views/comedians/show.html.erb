@@ -1,0 +1,16 @@
+<h1><%=@comedian.name%></h1>
+<%=@comedian.age%><br>
+<%=@comedian.gender%>
+<br>
+<h2>Jokes</h2>
+<% @jokes.each do |j|%>
+    <%= j.joke%>
+<%end%>
+
+<h2> Stand Up Bits</h2>
+<%=@bits.each do |b|%>
+    <%=b.bits%>
+    <%end%>
+
+
+

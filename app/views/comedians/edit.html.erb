@@ -1,0 +1,10 @@
+<h1>Update Comedian</h1>
+<%= form_for(@comedian) do |f|%>
+    <%=f.label :name%>
+    <%=f.text_field :name%><br>
+    <%=f.label :age%>
+    <%=f.number_field :age%> <br>
+    <%=f.label :gender%>
+    <%=f.text_field :gender%>
+    <%=f.submit "Update Comedian"%>
+    <%end%>

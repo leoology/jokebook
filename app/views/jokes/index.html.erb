@@ -1,0 +1,5 @@
+<h1>Jokes</h1>
+<% @joke.each do |j|%>
+        <%=j.joke%><br>
+    <%end%>
+    <%= link_to "New Joke", new_joke_path %>

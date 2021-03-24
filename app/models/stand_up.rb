@@ -1,0 +1,2 @@
+class StandUp < ApplicationRecord
+end
