@@ -1,7 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Jokebook</title>
+    <h1>Jokebook</h1>
+    <br>
+    <nav>
+    <a class="navbar-link <%=jokes_path%>" href="/">Jokes</a>
+    <a class="navbar-link <%stand_ups_path%>" href="/">Stand Up</a>
+    <a class="navbar-link <%=comedians_path%>" href="/">Comedians</a>
+    </nav>
+
+
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>

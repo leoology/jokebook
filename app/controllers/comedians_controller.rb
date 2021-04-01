@@ -1,12 +1,18 @@
 class ComediansController < ApplicationController
   before_action :find_comedian, only: [:show, :edit, :update, :destroy]
+  before_action :redirect_if_not_logged_in
   def new
     @comedian=Comedian.new
   end
 
   def create
-    @comedian=Comedian.create(comedian_params(:name, :age, :gender))
-    redirect_to @comedian
+    @comedian = Comedian.create(comedian_params)
+    if @comedian.id
+      session[:id] = @comedian.id
+      redirect_to @comedian
+    else
+      render :new
+    end
   end
 
   def edit

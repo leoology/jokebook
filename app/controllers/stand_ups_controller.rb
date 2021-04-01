@@ -1,5 +1,6 @@
 class StandUpsController < ApplicationController
   before_action :find_bit, only: [:show, :edit, :update, :destroy]
+  before_action :redirect_if_not_logged_in
 
   def new
     @bit=StandUp.new

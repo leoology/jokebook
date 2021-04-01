@@ -1,0 +1,12 @@
+<h1> Login </h1>
+<%= form_with(model: @comedian, url:"/login") do |f|
+    <%= f.label :email%>
+    <%=f.email_field :email %>
+    <br>
+    <%= f.label :password%>
+    <%=f.password_field :password%>
+    <br>
+    <%=f.submit :login %>
+    <%end%>
+Or <%= link_to "Sign Up", signup_path %>
+
