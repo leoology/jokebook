@@ -1,0 +1,2 @@
+      invoke  active_record
+      create    db/migrate/20210329191156_add_category_to_jokes.rb

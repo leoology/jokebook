@@ -1,5 +1,5 @@
 <h1>Stand Up Bits</h1>
 <% @bit.each do |b|%>
-      <p>  <%= b.bits %></p><br>
+      <p>  <%= b.bits %> by <%=b.comedian_id.name%></p><br>
     <%end%>
-    <%= link_to "New Stand Up", "/stand_ups/new"%>
+ <%= link_to "New Stand Up", "/stand_ups/new"%>

@@ -6,9 +6,9 @@ class StandUpsController < ApplicationController
   end
 
   def create
-    if  @bit=StandUp.create(bit_params(:bits, :comedian_id))
-      
-      redirect_to '/stand_ups'
+    @bit=StandUp.new(bit_params(:bits, :comedian_id))
+    if @bit.save
+      redirect_to 'comedian_path/:id/stand_ups_path/:id'
     else 
       render :new
     end 
@@ -43,4 +43,6 @@ class StandUpsController < ApplicationController
   def find_bit
     @bit=StandUp.find_by_id(params[:id])
   end 
+
+
 end

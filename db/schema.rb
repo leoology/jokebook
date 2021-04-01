@@ -10,19 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_06_014331) do
+ActiveRecord::Schema.define(version: 2021_03_29_191156) do
 
-  create_table "comedians", force: :cascade do |t|
-    t.string "name"
-    t.integer "age"
-    t.string "gender"
+  create_table "comedian_joke", force: :cascade do |t|
+    t.integer "comedian_id"
+    t.integer "joke_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "joins", force: :cascade do |t|
-    t.integer "comedian_id"
-    t.integer "joke_id"
+  create_table "comedians", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.integer "age"
+    t.string "gender"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -31,10 +33,12 @@ ActiveRecord::Schema.define(version: 2021_03_06_014331) do
     t.string "joke"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "category"
   end
 
   create_table "stand_ups", force: :cascade do |t|
-    t.string "bits"
+    t.string "bit"
+    t.integer "bit_id"
     t.integer "comedian_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
