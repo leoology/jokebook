@@ -1,6 +1,6 @@
 class JokesController < ApplicationController
   before_action :find_joke, only: [:show, :edit, :update, :destroy]
-  before_action :redirect_if_not_logged_in
+  before_action :redirect_if_logged_in, only: [:new]
 
   def new
     @joke=Joke.new

@@ -8,7 +8,8 @@ get '/signup', to: 'comedians#new'
 post '/comedians', to: 'comedians#create'
 get '/login', to: 'sessions#new'
 post '/login', to: 'sessions#create'
-get '/logout', to: 'sessions#destory'
+get '/logout', to: 'sessions#destroy'
+get '/home', to: 'sessions#home'
 resources :jokes
 resources :stand_ups
 end

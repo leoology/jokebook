@@ -1,4 +1,4 @@
 <h1>Comedians</h1>
-<% @comedians.each do |c|%>
-        <%= link_to "#{c.name}", "/comedians/#{c.id}" %>
+<%= @comedians.each do |c|%>
+        <%= link_to "#{c.name}", "/comedians/#{c.id}" %><br>
     <%end%>

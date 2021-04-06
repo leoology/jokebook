@@ -4,15 +4,15 @@ module ApplicationHelper
     end
 
     def logged_in?
-        !!session[:user_id]
+        !!session[:comedian_id]
     end
 
     def current_user
-        @current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]
+        @current_user ||= Comedian.find_by_id(session[:comedian_id]) if session[:comedian_id]
     end
 
     def redirect_if_logged_in
-        redirect_to products_path if logged_in?
+        redirect_to jokes_path if logged_in?
     end
 
 end

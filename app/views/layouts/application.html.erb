@@ -3,11 +3,16 @@
   <head>
     <h1>Jokebook</h1>
     <br>
+    <% if logged_in?%>
     <nav>
-    <a class="navbar-link <%=jokes_path%>" href="/">Jokes</a>
-    <a class="navbar-link <%stand_ups_path%>" href="/">Stand Up</a>
-    <a class="navbar-link <%=comedians_path%>" href="/">Comedians</a>
+    <a class="navbar-link <%=jokes_path%>" href="/jokes">Jokes</a>
+    <a class="navbar-link <%stand_ups_path%>" href="/stand_ups">Stand Up</a>
+    <a class="navbar-link <%=comedians_path%>" href="/comedians">Comedians</a>
+    <a class="navbar-link" href="/comedians/<%=current_user.id%>">My Page</a>
+    <a class="navbar-link link_to '/logout'" href="/logout">Logout</a>
+
     </nav>
+    <%end%>
 
 
     <meta name="viewport" content="width=device-width,initial-scale=1">

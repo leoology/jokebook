@@ -1,15 +1,16 @@
 class ComediansController < ApplicationController
   before_action :find_comedian, only: [:show, :edit, :update, :destroy]
-  before_action :redirect_if_not_logged_in
+  before_action :redirect_if_logged_in, only: [:new]
+  before_action :redirect_if_not_logged_in, only: [:show, :edit]
   def new
     @comedian=Comedian.new
   end
 
   def create
-    @comedian = Comedian.create(comedian_params)
+    @comedian = Comedian.create(comedian_params(:name, :email, :gender, :password_digest, :age))
     if @comedian.id
-      session[:id] = @comedian.id
-      redirect_to @comedian
+      session[:comedian_id] = @comedian.id
+      redirect_to home_path
     else
       render :new
     end
@@ -19,30 +20,46 @@ class ComediansController < ApplicationController
   end
 
   def update
-    if @comedian.update(comedian_params(:name, :age, :gender))  
+    if @comedian.update(comedian_params(:name, :gender))  
       redirect_to @comedian
     else 
       render :edit
     end 
   end
 
-  def destroy
-    @comedian.destroy
-    redirect_to comedians_path
-  end
-
   def show
-   @jokes= @comedian.jokes.all
+   # byebug
+    @comedian=Comedian.find_by_id(params[:id])
+
   end
 
   def index
     @comedians= Comedian.all
   end
+
   private
-  def comedian_params(*args)
-    params.require(:comedian).permit(*args)
-  end 
-  def find_comedian 
-    @comedian=Comedian.find_by_id(params[:id])
-  end 
+    def comedian_params(*args)
+      params.require(:comedian).permit(*args)
+    end 
+    def find_comedian 
+      @comedian=Comedian.find_by_id(params[:comedian_id])
+    end 
+
+    def redirect_if_not_logged_in
+      redirect_to login_path if !logged_in?
+  end
+
+  def logged_in?
+      !!session[:comedian_id]
+  end
+
+  def current_user
+      @current_user ||= Comedian.find_by_id(session[:comedian_id]) if session[:comedian_id]
+  end
+
+  def redirect_if_logged_in
+      redirect_to jokes_path if logged_in?
+  end
+
+
 end

@@ -1,16 +1,10 @@
-<h1><%=@comedian.name%></h1>
-<%=@comedian.age%><br>
-<%=@comedian.gender%>
+<h1><%= @comedian.name %></h1>
+<%= @comedian.age%><br>
+<%= @comedian.gender%>
 <br>
-<h2>Jokes</h2>
-<% @jokes.each do |j|%>
-    <%= j.joke%>
-<%end%>
+<%= link_to "#{@comedian.name}'s Jokes", '/comedians/#{comedian.id}/jokes' %>
+<%= link_to "#{@comedian.name}'s Bits", '/comedians/#{comedian.id}/stand_ups' %>
 
-<h2> Stand Up Bits</h2>
-<%=@bits.each do |b|%>
-    <%=b.bits%>
-    <%end%>
 
 
 
