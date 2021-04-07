@@ -1,4 +1,9 @@
-<h1>Jokes</h1>
+<% if params[:comedian_id] %>
+        <h2><%="#{@comedian.name}'s Jokes"%></h2>
+    <%else%>
+        <h2>Jokes</h2>
+<%end%>
+
 <% @joke.each do |j|%>
         <%=j.joke%><br>
     <%end%>

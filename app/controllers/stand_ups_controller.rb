@@ -30,8 +30,12 @@ class StandUpsController < ApplicationController
   end
 
   def index
-    
-    @bit=StandUp.all
+    @comedian= Comedian.find(params[:comedian_id])
+    if params[:comedian_id]
+      @bit= @comedian.stand_ups
+    else 
+      @bit=StandUp.all
+    end 
   end
 
   def show

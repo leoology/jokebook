@@ -1,4 +1,10 @@
-<h1>Stand Up Bits</h1>
+<% if params[:comedian_id] %>
+    <h2><%="#{@comedian.name}'s Stand Up Bits"%></h2>
+    <%else%>
+<h2>Stand Up Bits</h2>
+<%end%>
+
+
 <% @bit.each do |b|%>
       <p>  <%= b.bits %> by <%=b.comedian_id.name%></p><br>
     <%end%>

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 resources :comedians do
-  resources :stand_ups, only: [:index, :show, :new]
+  resources :stand_ups, only: [:index, :new, :edit]
+  resources :jokes, only: [:index, :new]
 
 end 
 

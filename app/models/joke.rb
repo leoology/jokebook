@@ -1,6 +1,6 @@
 class Joke < ApplicationRecord
-    has_many :comedians, through: :comedian_jokes
-    has_many :comedian_jokes
+    has_many :comedian_joke
+    has_many :comedians, through: :comedian_joke
     validates :joke, presence: true
 
     
