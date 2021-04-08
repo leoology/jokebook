@@ -3,13 +3,14 @@ class JokesController < ApplicationController
   before_action :redirect_if_not_logged_in
 
   def new
-
+    @joke= Joke.new
   end
 
   def create
     @joke= current_user.jokes.build(joke_params(:joke))
     if @joke.save
-      redirect_to joke_path(@joke)
+      redirect_to comedian_jokes_path(current_user)
+      #byebug
     else 
       render :new
     end 
@@ -31,8 +32,8 @@ class JokesController < ApplicationController
   end
 
   def index
-    @comedian= Comedian.find(params[:comedian_id])
     if params[:comedian_id]
+      @comedian= Comedian.find(params[:comedian_id])
       @joke= @comedian.jokes
     else 
       @joke=Joke.all
@@ -42,24 +43,7 @@ class JokesController < ApplicationController
   def joke_params(*args)
     params.require(:joke).permit(*args)
   end 
-  def find_bit
+  def find_joke
     @joke=Joke.find_by_id(params[:id])
   end 
-
-    def redirect_if_not_logged_in
-      redirect_to login_path if !logged_in?
-  end
-
-  def logged_in?
-      !!session[:comedian_id]
-  end
-
-  def current_user
-      @current_user ||= Comedian.find_by_id(session[:comedian_id]) if session[:comedian_id]
-  end
-
-  def redirect_if_logged_in
-      redirect_to jokes_path if logged_in?
-  end
-
 end

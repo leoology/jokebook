@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2021_03_29_191156) do
 
-  create_table "comedian_joke", force: :cascade do |t|
+  create_table "comedian_jokes", force: :cascade do |t|
     t.integer "comedian_id"
     t.integer "joke_id"
     t.datetime "created_at", precision: 6, null: false

@@ -1,10 +1,9 @@
 <h1><%= @comedian.name %></h1>
 <%= @comedian.age%><br>
 <%= @comedian.gender%>
-<%= @comedian.id%>
 <br>
-<%= link_to "#{@comedian.name}'s Jokes", '/comedians/comedian_id/jokes' %>
-<%= link_to "#{@comedian.name}'s Bits", '/comedians/#{@comedian.id}/stand_ups' %>
+<%= link_to "#{@comedian.name}'s Jokes", "/comedians/#{@comedian.id}/jokes" %>
+<%= link_to "#{@comedian.name}'s Bits", "/comedians/#{@comedian.id}/stand_ups" %>
 
 
 

@@ -7,9 +7,9 @@ class StandUpsController < ApplicationController
   end
 
   def create
-    @bit=StandUp.new(bit_params(:bits, :comedian_id))
+    @bit=StandUp.new(bit_params(:bit, :comedian_id))
     if @bit.save
-      redirect_to 'comedian_path/:id/stand_ups_path/:id'
+      redirect_to comedian_stand_ups_path(@comedian)
     else 
       render :new
     end 
@@ -20,7 +20,7 @@ class StandUpsController < ApplicationController
   end
 
   def update
-    @bit.update(bit_params(:bits))
+    @bit.update(bit_params(:bit))
   end
 
   def destroy
@@ -30,8 +30,8 @@ class StandUpsController < ApplicationController
   end
 
   def index
-    @comedian= Comedian.find(params[:comedian_id])
     if params[:comedian_id]
+      @comedian= Comedian.find(params[:comedian_id])
       @bit= @comedian.stand_ups
     else 
       @bit=StandUp.all

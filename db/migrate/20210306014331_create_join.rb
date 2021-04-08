@@ -1,6 +1,6 @@
 class CreateJoin < ActiveRecord::Migration[6.1]
   def change
-    create_table :comedian_joke do |t|
+    create_table :comedian_jokes do |t|
       t.integer :comedian_id
       t.integer :joke_id
 

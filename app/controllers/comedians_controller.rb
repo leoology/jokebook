@@ -41,25 +41,8 @@ class ComediansController < ApplicationController
     def comedian_params(*args)
       params.require(:comedian).permit(*args)
     end 
+    
     def find_comedian 
       @comedian=Comedian.find_by_id(params[:comedian_id])
     end 
-
-    def redirect_if_not_logged_in
-      redirect_to login_path if !logged_in?
-  end
-
-  def logged_in?
-      !!session[:comedian_id]
-  end
-
-  def current_user
-      @current_user ||= Comedian.find_by_id(session[:comedian_id]) if session[:comedian_id]
-  end
-
-  def redirect_if_logged_in
-      redirect_to jokes_path if logged_in?
-  end
-
-
 end
