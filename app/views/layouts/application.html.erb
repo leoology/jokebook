@@ -1,8 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <style>
+  .title{
+    background-color: skyBlue;
+    text-align: center;
+    border-style: solid;
+   
+  }
+  .bar{
+    text-align: center;
+    background: mediumAquamarine;
+
+  }
+  body{
+    background-image: url('https://i.ytimg.com/vi/rYy0o-J0x20/maxresdefault.jpg')
+  }
+  </style>
+  <div class  = "title">
     <h1>Jokebook</h1>
+    </div>
     <br>
+    <div class="bar">
     <% if logged_in?%>
     <nav>
     <a class="navbar-link <%=jokes_path%>" href="/jokes">Jokes</a>
@@ -13,7 +32,7 @@
 
     </nav>
     <%end%>
-
+    </div>
 
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>

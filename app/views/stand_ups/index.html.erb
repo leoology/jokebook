@@ -1,11 +1,35 @@
+<style>
+.comedian{
+    background-color: white;
+    text-align: center;
+    border-style: solid;
+}
+.comedian .c{
+  text-align: left;
+}
+</style>
+<div class=comedian>
 <% if params[:comedian_id] %>
-    <h2><%="#{@comedian.name}'s Stand Up Bits"%></h2>
+    <h2><%="#{@comedian.name}'s Stand Up Bits" %></h2>
     <%else%>
 <h2>Stand Up Bits</h2>
 <%end%>
 
-
+<div class=c>
 <% @bit.each do |b|%>
-      <p>  <%= b.bits %> by <%=b.comedian_id.name%></p><br>
-    <%end%>
- <%= link_to "New Stand Up", "/stand_ups/new"%>
+      <p>  <%= b.bit %> </p>
+      <% if b.comedian_id==current_user.id %>
+        <%= link_to "Delete", comedian_stand_up_path(b.comedian_id, b.id), method: "delete" %> 
+        <%= link_to "Edit", edit_comedian_stand_up_path(b.comedian_id, b.id)%>
+        <%end%> 
+        
+        <br>
+        <%end%>
+  </div>
+        <% if !params[:comedian_id]%>
+              <%= link_to "New Stand Up", "/stand_ups/new"%> 
+        <%else%> 
+            <%= link_to "New Stand Up", new_comedian_stand_up_path(current_user)%>
+          <%end%>
+
+ </div>

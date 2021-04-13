@@ -1,7 +1,19 @@
+<style>
+.joke{
+    background-color: rgba(255,255,255,1);
+    border-style: solid;
+}
+.joke .sub{
+    text-align: center;
+
+}
+</style>
+<div class=joke>
 <% if params[:comedian_id] %>
     <h2><%="#{@comedian.name}'s Jokes"%></h2>
 <%else%>
-    <h2>Jokes</h2> 
+  <div class=sub>  <h2>Jokes</h2> 
+  </div>
  <%end%>
         <% @joke.each do |j|%>
                 <%=j.joke%>
@@ -10,3 +22,4 @@
             <%end%>
 <br>
     <%= link_to "New Joke", new_joke_path %>
+    </div>

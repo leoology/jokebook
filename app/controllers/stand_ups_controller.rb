@@ -7,12 +7,13 @@ class StandUpsController < ApplicationController
   end
 
   def create
-    @bit=StandUp.new(bit_params(:bit, :comedian_id))
+    @bit= current_user.stand_ups.build(bit_params(:bit, :comedian_id))
     if @bit.save
-      redirect_to comedian_stand_ups_path(@comedian)
+      redirect_to comedian_stand_ups_path(current_user)
     else 
       render :new
     end 
+    #TODO add params for comedian for nested routes, check index for reference
   end
 
   def edit
@@ -20,7 +21,11 @@ class StandUpsController < ApplicationController
   end
 
   def update
-    @bit.update(bit_params(:bit))
+    if @bit.update(bit_params(:bit))
+      redirect_to comedian_stand_ups_path(current_user.id)
+    else 
+      render :edit
+    end 
   end
 
   def destroy

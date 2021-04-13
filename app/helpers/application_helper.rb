@@ -15,4 +15,5 @@ module ApplicationHelper
         redirect_to jokes_path if logged_in?
     end
 
+
 end

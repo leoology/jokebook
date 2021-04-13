@@ -7,4 +7,12 @@ class Comedian < ApplicationRecord
     validates :name, presence: true
     validates :email, presence: true, uniqueness: true
 
+    def slef.oauth(auth)
+        self.find_or_create_by(provider: auth["provider"],  uid: auth["uid"]) do |u|
+            u.email = auth['info']['email']
+            u.name = auth['info']['name'] 
+            u.password = SecureRandom.hex(20)
+        end 
+    end 
+
 end

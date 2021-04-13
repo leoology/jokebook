@@ -4,10 +4,14 @@ class JokesController < ApplicationController
 
   def new
     @joke= Joke.new
+    @joke.comedian_jokes.build
   end
 
   def create
-    @joke= current_user.jokes.build(joke_params(:joke))
+    #byebug
+    @joke= Joke.new(joke_params(:joke, comedian_jokes_attributes: [:rating, :comedian_id]))
+    @joke.comedians << current_user
+    #byebug
     if @joke.save
       redirect_to comedian_jokes_path(current_user)
       #byebug

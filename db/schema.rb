@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_29_191156) do
+ActiveRecord::Schema.define(version: 2021_04_12_211522) do
 
   create_table "comedian_jokes", force: :cascade do |t|
     t.integer "comedian_id"
     t.integer "joke_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "rating"
   end
 
   create_table "comedians", force: :cascade do |t|
@@ -38,7 +39,6 @@ ActiveRecord::Schema.define(version: 2021_03_29_191156) do
 
   create_table "stand_ups", force: :cascade do |t|
     t.string "bit"
-    t.integer "bit_id"
     t.integer "comedian_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

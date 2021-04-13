@@ -1,4 +1,18 @@
+<style>
+.comedian{
+    background-color: white;
+    text-align: center;
+    border-style: solid;
+}
+.comedian .c{
+    text-align: left;
+}
+</style>
+<div class=comedian>
 <h1>Comedians</h1>
+<div class = c>
 <% @comedians.each do |c|%>
         <%= link_to "#{c.name}", "/comedians/#{c.id}" %><br>
     <%end%>
+    </div>
+    </div>
