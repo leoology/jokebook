@@ -7,7 +7,7 @@ class ComediansController < ApplicationController
   end
 
   def create
-    @comedian = Comedian.create(comedian_params(:name, :email, :gender, :password_digest, :age))
+    @comedian = Comedian.create(comedian_params(:name, :email, :gender, :password, :age))
     if @comedian.id
       session[:comedian_id] = @comedian.id
       redirect_to home_path
@@ -41,7 +41,7 @@ class ComediansController < ApplicationController
     def comedian_params(*args)
       params.require(:comedian).permit(*args)
     end 
-    
+
     def find_comedian 
       @comedian=Comedian.find_by_id(params[:comedian_id])
     end 
