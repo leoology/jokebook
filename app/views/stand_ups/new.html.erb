@@ -1,7 +1,12 @@
+<div class=b>
 <h1>New Bit</h1>
-<%= form_for(@bit) do |f|%>
-    <%=f.label :bit %>
-    <%=f.text_field :bit %><br>
-    <%=f.submit "Create Bit"%>
+<div class=c>
+<%= if_errors(@bit)%>
+            <%= form_for(@bit) do |f|%>
+                 <%=f.label :bit %>
+                 <%=f.text_field :bit %><br>
+                <%=f.submit "Create Bit"%>
 
-    <%end%>
+            <%end%>
+        </div>
+ </div>

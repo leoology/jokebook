@@ -9,15 +9,14 @@ class JokesController < ApplicationController
 
   def create
     #byebug
-    @joke= Joke.new(joke_params(:joke, comedian_jokes_attributes: [:rating, :comedian_id]))
-    @joke.comedians << current_user
-    #byebug
-    if @joke.save
-      redirect_to comedian_jokes_path(current_user)
+    @joke= current_user.jokes.build(joke_params(:joke, comedian_jokes_attributes: [:rating, :comedian_id]))
       #byebug
-    else 
-      render :new
-    end 
+      if @joke.save
+        redirect_to comedian_jokes_path(current_user)
+        #byebug
+      else 
+        render :new
+      end 
   end
 
   def edit

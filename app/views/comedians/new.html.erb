@@ -1,14 +1,20 @@
+<div class=b>
 <h1>Sign Up</h1>
-<%= form_for(@comedian) do |f|%>
-    <%=f.label :name%>
-    <%=f.text_field :name%><br>
-    <%=f.label :age%>
-    <%=f.number_field :age%> <br>
-    <%=f.label :gender%>
-    <%=f.text_field :gender%><br>
-    <%= f.label :email%>
-    <%= f.email_field :email %><br>
-    <%= f.label :password%>
-    <%=f.password_field :password%><br>
-    <%=f.submit "Create Comedian"%>
-    <%end%>
+<div class=c>
+<%= if_errors(@comedians)%>
+            <%= form_for(@comedian) do |f|%>
+                <%=f.label :name%>
+                <%=f.text_field :name%><br>
+                <%=f.label :age%>
+                <%=f.number_field :age%> <br>
+                <%=f.label :gender%>
+                <%=f.text_field :gender%><br>
+                <%= f.label :email%>
+                <%= f.email_field :email %><br>
+                <%= f.label :password%>
+                <%=f.password_field :password%><br>
+                <%=f.submit "Create Comedian"%>
+             <%end%>
+    Or <%= link_to "Log In", login_path%>
+         </div>
+</div>

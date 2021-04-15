@@ -15,5 +15,8 @@ module ApplicationHelper
         redirect_to jokes_path if logged_in?
     end
 
+    def if_errors(object)
+        render partial:"comedians/errors", locals:{object:object} if object.errors.any?
+    end
 
 end

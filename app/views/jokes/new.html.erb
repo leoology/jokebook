@@ -1,11 +1,16 @@
+<div class= b>
 <h1>New Joke</h1>
-<%= form_for(@joke) do |f|%>
-    <%=f.label :joke%>
-    <%=f.text_field :joke%><br>
-    <%= f.fields_for :comedian_jokes do |t|%>
-        <%= t.label :rating%>
-        <%= t.number_field :rating, in: 1..5%>
-        <%= t.hidden_field :comedian_id, value: current_user.id%>
-    <%end%>
-<%=f.submit "Create Joke"%>
-<%end%>
+<div class=c>
+    <%= if_errors(@joke)%>
+            <%= form_for(@joke) do |f|%>
+                 <%=f.label :joke%>
+                <%=f.text_field :joke%><br>
+                 <%= f.fields_for :comedian_jokes do |t|%>
+                    <%= t.label :rating%>
+                    <%= t.number_field :rating, in: 1..5%>
+                    <%= t.hidden_field :comedian_id, value: current_user.id%>
+                 <%end%>
+                <%=f.submit "Create Joke"%>
+            <%end%>
+        </div>
+</div>

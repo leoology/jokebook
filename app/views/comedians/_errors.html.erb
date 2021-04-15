@@ -1,0 +1,9 @@
+
+     <div class=error>
+        <h2><%= pluralize(object.errors.count, "Error")%> </h2>
+        <ul class="d">
+            <%object.errors.full_messages.each do |s|%>
+                <li class="message"><%=s%></li>
+            <%end%>
+        </ul>
+    </div>

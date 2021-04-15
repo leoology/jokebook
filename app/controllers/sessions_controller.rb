@@ -38,6 +38,7 @@ class SessionsController < ApplicationController
             redirect_to @comedian
         else 
             render :new
+        end 
     end 
 
     private
