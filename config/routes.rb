@@ -12,6 +12,6 @@ post '/login', to: 'sessions#create'
 get '/logout', to: 'sessions#destroy'
 get '/home', to: 'sessions#home'
 get 'auth/:provider/callback', to: 'sessions#omniauth'
-resources :jokes
-resources :stand_ups
+resources :jokes, only: [:index]
+resources :stand_ups, only: [:index]
 end

@@ -1,10 +1,16 @@
-<h1>Update Comedian</h1>
-<%= form_for(@comedian) do |f|%>
-    <%=f.label :name%>
-    <%=f.text_field :name%><br>
-    <%=f.label :age%>
-    <%=f.number_field :age%> <br>
-    <%=f.label :gender%>
-    <%=f.text_field :gender%>
-    <%=f.submit "Update Comedian"%>
-    <%end%>
+<div class=b>
+    <h1>Update Comedian</h1>
+    <div class=c>
+        <%= form_for(@comedian) do |f|%>
+            <%=f.label :name%>
+            <%=f.text_field :name%><br>
+            <%=f.label :age%>
+            <%=f.number_field :age%> <br>
+            <%=f.label :gender%>
+            <%=f.text_field :gender%><br>
+            <%=f.label :bio%><br>
+            <%= f.text_area :bio%>
+            <%=f.submit "Update Comedian"%>
+        <%end%>
+    </div>
+</div>

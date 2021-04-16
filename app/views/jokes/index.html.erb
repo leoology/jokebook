@@ -6,12 +6,21 @@
  <h2>Jokes</h2> 
  <div class="c"> 
 <%end%>
+  <%= form_with(url: jokes_path) do |f| %>
+    <%= f.label :search, "Search Jokes" %>
+    <%= f.text_field :search %>
+    <%= f.submit "Search" %>
+  <%end%>
+  <br>    
   <% @joke.each do |j|%>
     <%=j.joke%>
     <br>
     
     <%end%>
     <br>
-    <%= link_to "New Joke", new_joke_path %>
+    <% if @joke.first.comedian_id == current_user.id%>
+    <%= link_to "New Joke", new_comedian_joke_path(current_user)%>
+ 
+    <%end%>
     </div>
 </div>

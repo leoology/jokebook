@@ -1,7 +1,10 @@
 
 <div class= comedian>
 <h1><%= @comedian.name %></h1>
-<%= @comedian.age%>, <%= @comedian.gender%>
+<%= @comedian.age%>, <%= @comedian.gender%><br>
+<%= @comedian.bio%><br>
+<%= link_to "Edit Bio", edit_comedian_path(@comedian)%>
+<br>
 <br>
 <%= link_to "#{@comedian.name}'s Jokes", "/comedians/#{@comedian.id}/jokes" %>
 <%= link_to "#{@comedian.name}'s Bits", "/comedians/#{@comedian.id}/stand_ups" %>

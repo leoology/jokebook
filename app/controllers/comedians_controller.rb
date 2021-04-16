@@ -20,7 +20,7 @@ class ComediansController < ApplicationController
   end
 
   def update
-    if @comedian.update(comedian_params(:name, :gender))  
+    if @comedian.update(comedian_params(:name, :gender, :bio, :age))  
       redirect_to @comedian
     else 
       render :edit
@@ -43,6 +43,6 @@ class ComediansController < ApplicationController
     end 
 
     def find_comedian 
-      @comedian=Comedian.find_by_id(params[:comedian_id])
+      @comedian=Comedian.find_by_id(params[:id])
     end 
 end
