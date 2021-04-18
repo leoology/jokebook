@@ -1,24 +1,6 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This repository uses Ruby on Rails to create a website with full functionality and other features. 
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
+This is jokebook. The ideal social media platform for comedians. A place where people can store their jokes and stand up bits as well as observe others people's writings. Includes third-party login.
 * ...
