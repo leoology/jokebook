@@ -1,26 +1,30 @@
 
 <div class="b">
-<% if params[:comedian_id] %>
-    <h2><%="#{@comedian.name}'s Jokes"%></h2>
-<%else%>
- <h2>Jokes</h2> 
- <div class="c"> 
-<%end%>
-  <%= form_with(url: jokes_path) do |f| %>
-    <%= f.label :search, "Search Jokes" %>
-    <%= f.text_field :search %>
-    <%= f.submit "Search" %>
-  <%end%>
+    <% if params[:comedian_id] %>
+        <h2><%="#{@comedian.name}'s Jokes"%></h2>
+    <%else%>
+        <h2>Jokes</h2> 
+    <%end%>
+            <%= form_with(url: jokes_path, method: :get) do |f| %>
+                <%= f.label :search, "Search Jokes" %>
+                <%= f.text_field :search %>
+                <%= f.submit "Search" %>
+            <%end%>
   <br>    
-  <% @joke.each do |j|%>
-    <%=j.joke%>
-    <br>
-    
-    <%end%>
-    <br>
-    <% if @joke.first.comedian_id == current_user.id%>
-    <%= link_to "New Joke", new_comedian_joke_path(current_user)%>
- 
-    <%end%>
-    </div>
+        <div class="c"> 
+            <% @jokes.each do |j|%>
+            <%=j.joke %>
+            <%if j.comedian_ids== current_user.id%>
+                <%= link_to "Unsave", favorite_path(j)  %>
+           <%else%>
+                <%= link_to "Save", favorite_path(j)%>
+                <%end %>
+            <%= if j.comedian_ids==current_user.id%>
+                <%= link_to "Edit Joke", edit_comedian_jokes_path(j.comedian_id, j.id)%>
+                <%end %>
+ <br>
+            <%end%>
+ <br>
+                <%= link_to "New Joke", new_comedian_joke_path(current_user)%>
+         </div>
 </div>
