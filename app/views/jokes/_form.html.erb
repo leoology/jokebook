@@ -1,0 +1,8 @@
+
+                <%=form_builder.label :joke%>
+                <%=form_builder.text_field :joke%><br>
+                <%= form_builder.fields_for :comedian_jokes do |t|%>
+                    <%= t.label :rating%>
+                    <%= t.number_field :rating, in: 1..5%>
+                    <%= t.hidden_field :comedian_id, value: current_user.id%>
+                 <%end%>

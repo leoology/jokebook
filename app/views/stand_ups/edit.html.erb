@@ -1,7 +1,12 @@
-<h1>Edit Bit</h1>
-<%= form_for(@bit) do |f|%>
-    <%=f.label :bit %>
-    <%=f.text_field :bit %><br>
-    <%=f.submit "Update Bit"%>
+<div class= b>
+    <h1>Edit Bit</h1>
+    <div class=c>
+        <%= if_errors(@bit)%>
 
-    <%end%>
+        <%= form_with( url:comedian_stand_up_path(@bit.comedian_id, @bit), model: @bit) do |f|%>
+        <%= render partial: "form", locals:{form_builder: f, bit: @bit}%>
+            <%=f.submit "Update Bit"%>
+
+        <%end%>
+    </div>
+</div>

@@ -1,5 +1,5 @@
 class JokesController < ApplicationController
-  before_action :find_joke, only: [:show, :edit, :update, :destroy, :favorite]
+  before_action :find_joke, only: [:show, :edit, :update, :favorite]
   before_action :redirect_if_not_logged_in
 
   def new
@@ -9,7 +9,8 @@ class JokesController < ApplicationController
 
   def create
     #byebug
-    @joke= current_user.jokes.build(joke_params(:joke, comedian_jokes_attributes: [:rating, :comedian_id]))
+    @joke= current_user.jokes.build(joke_params(:joke, comedian_jokes_attributes: [:rating, :comedian_id, :id]))
+    @joke.creator_id=current_user.id
       #byebug
       if @joke.save
         redirect_to comedian_jokes_path(current_user)
@@ -23,8 +24,11 @@ class JokesController < ApplicationController
   end
 
   def update
-    if @joke.comedian_id == current_user.id && @joke.update(joke_params(:joke))
+    byebug
+    if @joke.creator_id == current_user.id && @joke.update(joke_params(:joke, comedian_jokes_attributes: [:rating, :id]))
         redirect_to comedian_jokes_path(current_user)
+    else 
+      render :edit
       end
   end
 
@@ -42,21 +46,19 @@ class JokesController < ApplicationController
     elsif params[:comedian_id]
       @comedian= Comedian.find(params[:comedian_id])
       @jokes= @comedian.jokes
+     # byebug
     else 
       @jokes=Joke.all
     end 
   end
 
   def favorite 
-    byebug
-    if !current_user.id == @joke.comedian.id
-      current_user.jokes<< @joke
-      redirect_to comedian_jokes_path(current_user)
+    if current_user.jokes.include?(@joke)
+      current_user.jokes.delete(@joke)
     else
-      @joke.delete
-      redirect_to comedian_jokes_path(current_user)
-
+      comedian_joke=ComedianJoke.create(comedian: current_user, joke:@joke, rating:params[:rating])      
     end
+    redirect_to comedian_jokes_path(current_user)
   end
   private
   def joke_params(*args)

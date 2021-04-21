@@ -1,7 +1,7 @@
 
-<div class=b>
+<div class="b">
     <h1>Comedians</h1>
-    <div class = c>
+    <div class = "c">
         <% @comedians.each do |c|%>
             <%= link_to "#{c.name}", "/comedians/#{c.id}" %><br>
         <%end%>

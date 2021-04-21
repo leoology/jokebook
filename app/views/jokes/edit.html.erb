@@ -1,16 +1,9 @@
-<div class= b>
-<h1>New Joke</h1>
-<div class=c>
-    <%= if_errors(@joke)%>
-            <%= form_for(@joke) do |f|%>
-                 <%=f.label :joke%>
-                <%=f.text_field :joke%><br>
-                 <%= f.fields_for :comedian_jokes do |t|%>
-                    <%= t.label :rating%>
-                    <%= t.number_field :rating, in: 1..5%>
-                    <%= t.hidden_field :comedian_id, value: current_user.id%>
-                 <%end%>
-                <%=f.submit "Update Joke"%>
-            <%end%>
-        </div>
+<div class= "b">
+    <h1>Edit Joke</h1>
+    <div class="c">
+       <%= form_with(model: @joke) do |f|%>
+            <%=render partial: "form", locals:{form_builder: f, joke: @joke}%>
+            <%=f.submit %>
+        <%end%>
+    </div>
 </div>

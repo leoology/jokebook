@@ -1,9 +1,9 @@
 
-<div class= comedian>
+<div class= "comedian">
 <h1><%= @comedian.name %></h1>
 <%= @comedian.age%>, <%= @comedian.gender%><br>
 <%= @comedian.bio%><br>
-<%= link_to "Edit Bio", edit_comedian_path(@comedian)%>
+<%= link_to "Edit Bio", edit_comedian_path(@comedian) if current_user.id == @comedian.id%>
 <br>
 <br>
 <%= link_to "#{@comedian.name}'s Jokes", "/comedians/#{@comedian.id}/jokes" %>
