@@ -24,7 +24,7 @@ class JokesController < ApplicationController
   end
 
   def update
-    byebug
+   #byebug
     if @joke.creator_id == current_user.id && @joke.update(joke_params(:joke, comedian_jokes_attributes: [:rating, :id]))
         redirect_to comedian_jokes_path(current_user)
     else 

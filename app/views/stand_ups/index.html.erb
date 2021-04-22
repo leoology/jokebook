@@ -1,13 +1,9 @@
 
 <div class= b>
-<% if params[:comedian_id] %>
-    <h2><%="#{@comedian.name}'s Stand Up Bits" %></h2>
-    <%else%>
-<h2>Stand Up Bits</h2>
-<%end%>
+<%=format_header%>
 
-<div class=c>
-<% @bit.each do |b|%>
+  <div class=c>
+    <% @bit.each do |b|%>
       <p>  <%= b.bit %> </p>
       <% if b.comedian_id==current_user.id %>
         <%= link_to "Delete", comedian_stand_up_path(b.comedian_id, b.id), method: "delete" %> 
@@ -17,9 +13,8 @@
         
         <%end%>
   </div>
-        <% if @bit.first.comedian_id == current_user.id%>
-          <%= link_to "New Stand Up", new_comedian_stand_up_path(current_user)%>
+
+   <%= link_to "New Stand Up", new_comedian_stand_up_path(current_user)%>
            
-        <%end%>
 
  </div>

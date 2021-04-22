@@ -1,7 +1,7 @@
 <div class="b">
 <h1>Sign Up</h1>
 <div class="c">
-<%= if_errors(@comedians)%>
+<%= if_errors(@comedian)%>
             <%= form_for(@comedian) do |f|%>
                 <%=f.label :name%>
                 <%=f.text_field :name%><br>

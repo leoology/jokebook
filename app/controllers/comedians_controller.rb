@@ -29,7 +29,6 @@ class ComediansController < ApplicationController
 
   def show
    # byebug
-    @comedian=Comedian.find_by_id(params[:id])
 
   end
 

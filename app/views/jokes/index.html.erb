@@ -11,14 +11,14 @@
             <% @jokes.each do |j|%>
             <%=j.joke %>
             <%= form_with(url: favorite_path(j), method: :post) do |f| %>
-            <%= f.label :rating if !j.comedian_ids.include?(current_user.id)%>
-            <%= f.number_field :rating, in: 1..5 if !j.comedian_ids.include?(current_user.id)%>
-            <%= f.submit j.format_favorite_button(current_user.id)%>
+                <%= f.label :rating if !j.comedian_ids.include?(current_user.id)%>
+                <%= f.number_field :rating, in: 1..5 if !j.comedian_ids.include?(current_user.id)%>
+                <%= f.submit j.format_favorite_button(current_user.id)%>
              <%end %>
-            <% if j.creator_id == current_user.id%>
-                <%= link_to "Edit Joke", edit_comedian_joke_path(current_user, j.id)%>
-            <%end %>
- <br>
+             <%if j.creator_id == current_user.id%>
+                <%=link_to "Edit Joke", edit_comedian_joke_path(current_user, j.id)%>
+             <%end %>
+         <br>
             <%end%>
  <br>
                 <%= link_to "New Joke", new_comedian_joke_path(current_user)%>
