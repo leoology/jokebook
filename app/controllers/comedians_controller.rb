@@ -36,6 +36,10 @@ class ComediansController < ApplicationController
     @comedians= Comedian.all
   end
 
+  def age
+    @comedian=Comedian.sort_by_age
+  end
+
   private
     def comedian_params(*args)
       params.require(:comedian).permit(*args)
@@ -44,4 +48,5 @@ class ComediansController < ApplicationController
     def find_comedian 
       @comedian=Comedian.find_by_id(params[:id])
     end 
+
 end

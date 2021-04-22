@@ -1,5 +1,6 @@
 <div class="b">
     <h1>Update Comedian</h1>
+    <%= if_errors(@comedian)%>
     <div class="c">
         <%= form_for(@comedian) do |f|%>
             <%=f.label :name%>

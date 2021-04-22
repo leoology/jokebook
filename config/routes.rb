@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 resources :comedians do
-  resources :stand_ups, only: [:index, :new, :edit, :destroy, :update]
+  resources :stand_ups, only: [:index, :new, :edit, :destroy, :update, :create]
   resources :jokes, only: [:index, :new, :edit]
 
 end 
@@ -14,7 +14,8 @@ get '/home', to: 'sessions#home'
 get 'auth/:provider/callback', to: 'sessions#omniauth'
 resources :jokes, only: [:index, :update]
 resources :stand_ups, only: [:index]
-post '/jokes/:id/favorite', to: 'jokes#favorite', as: :favorite
-post '/comedians/:id/stand_ups/new', to:'stand_ups#create'
+post 'comedian/:id/jokes/:id/favorite', to: 'comedian_jokes#favorite', as: :favorite
+#post '/comedians/:id/stand_ups/new', to:'stand_ups#create'
 post '/comedians/:id/jokes/new', to:'jokes#create'
+get '/age', to: 'comedians#age'
 end

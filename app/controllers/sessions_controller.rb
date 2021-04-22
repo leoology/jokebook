@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
     end 
 
     def home
-
+        @jokes=ComedianJoke.highest_rated_jokes
     end
   
 

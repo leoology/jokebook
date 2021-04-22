@@ -32,9 +32,6 @@ class JokesController < ApplicationController
       end
   end
 
-  def destroy
-    @joke.destroy
-  end
 
   def show
 

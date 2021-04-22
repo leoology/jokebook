@@ -6,6 +6,8 @@ class Comedian < ApplicationRecord
 
     validates :name, presence: true
     validates :email, presence: true, uniqueness: true
+    scope :sort_by_age, ->{where("age>2").order(:age)}
+
 
     def self.oauth(auth)
         self.find_or_create_by(uid: auth["uid"]) do |u|
