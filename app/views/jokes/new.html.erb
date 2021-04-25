@@ -2,7 +2,7 @@
     <h1>New Joke</h1>
     <div class=c>
         <%= if_errors(@joke)%>
-        <%= form_with(url: new_comedian_joke_path(current_user), model: @joke, method: :post) do |f|%>
+        <%= form_with(url: comedian_jokes_path(current_user), model: @joke, method: :post) do |f|%>
             <%=render partial: "form", locals:{form_builder: f, joke: @joke}%>
             <%=f.submit "Create Joke"%>
         <%end%>

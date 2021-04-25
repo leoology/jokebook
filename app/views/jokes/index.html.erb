@@ -10,7 +10,7 @@
         <div class="c"> 
             <% @jokes.each do |j|%>
             <%=j.joke %>
-            <%= form_with(url: favorite_path(j), method: :post) do |f| %>
+            <%= form_with(url: favorite_path(current_user, j), method: :post) do |f| %>
                 <%= f.label :rating if !j.comedian_ids.include?(current_user.id)%>
                 <%= f.number_field :rating, in: 1..5 if !j.comedian_ids.include?(current_user.id)%>
                 <%= f.submit j.format_favorite_button(current_user.id)%>

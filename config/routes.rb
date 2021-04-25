@@ -14,7 +14,7 @@ get '/home', to: 'sessions#home'
 get 'auth/:provider/callback', to: 'sessions#omniauth'
 resources :jokes, only: [:index, :update]
 resources :stand_ups, only: [:index]
-post 'comedian/:id/jokes/:id/favorite', to: 'comedian_jokes#favorite', as: :favorite
+post 'comedian/:comedian_id/jokes/:id/favorite', to: 'comedian_jokes#favorite', as: :favorite
 #post '/comedians/:id/stand_ups/new', to:'stand_ups#create'
 #post '/comedians/:id/jokes/new', to:'jokes#create'
 get '/age', to: 'comedians#age'
